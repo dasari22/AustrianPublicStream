@@ -18,7 +18,7 @@
     along with AustrianPublicStream.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-    <string name="app_name">PublicStream</string>
+    <string name="app_name">GuruVani</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_settings">Settings</string>
 
@@ -30,31 +30,24 @@
     <string name="SETTINGS_REFETCH_INTERVAL">settingRefetchInterval</string>
 
     <!-- Example General settings -->
-    <string name="pref_about">Über diese App</string>
+    <string name="pref_about">About this app</string>
 
-    <string name="pref_title_refetch_interval">Aktualisierung der Liste</string>
-    <string name="pref_description_refetch_interval">Wie oft soll die Liste der Online Beiträge aktualisiert werden (Minuten)</string>
+    <string name="pref_title_refetch_interval">Update the list</string>
+    <string name="pref_description_refetch_interval">How often should the list of online Updating Contributions (minutes)</string>
 
-    <string name="pref_title_download_folder">Download - Ordner</string>
-    <string name="pref_description_download_folder">Wohin sollen die Offline Beiträge gespeichert werden?</string>
+    <string name="pref_title_download_folder">Download - Folder</string>
+    <string name="pref_description_download_folder">Where are the offline contributions saved ?</string>
 
-    <string name="pref_title_play_notification">Benachrichtigung - Abspielen</string>
-    <string name="pref_description_play_notification">Soll eine Benachrichtigung beim Abspielen angezeigt werden?</string>
+    <string name="pref_title_play_notification">Notification - Play</string>
+    <string name="pref_description_play_notification"> If a notification when playing are displayed?</string>
 
-    <string name="pref_title_pause_notification">Benachrichtigung - Pause</string>
-    <string name="pref_description_pause_notification">Soll eine Benachrichtigung angezeigt werden wenn der Beitrag pausiert ist?</string>
+    <string name="pref_title_pause_notification">Alert - Pause</string>
+    <string name="pref_description_pause_notification">A notification will be displayed if the discourse is paused?</string>
 
-    <string name="pref_title_lockscreen_notification">Benachrichtigung - Sperrbildschirm</string>
-    <string name="pref_description_lockscreen_notification">Soll eine Benachrichtigung am Sperrbildschirm angezeigt werden? TBD; noch nicht implementiert</string>
+    <string name="pref_title_lockscreen_notification">Alert - lock screen</string>
+    <string name="pref_description_lockscreen_notification">A notification will be displayed on the lock screen! TBD ; not implemented yet</string>
 
     <!-- about dialog -->
-    <string name="about_title">Über diese App</string>
-    <string name="about_message">Diese App wurde als Ersatz für die orginale Ö1 App des ORFs erstellt.\n
-    BETA Version! \n\n
-    Weitere Information sind auf GitHUB verfügbar:\n
-    https://github.com/benjaminaigner/AustrianPublicStream\n\n
-    Hinter dieser App stehen keine kommerziellen Interessen usw., sie wurde alleine aus Unzufriedenheit mit dem ORF entwickelt.
-    Keine meiner Bugreports wurden jemals umgesetzt, also dachte ich mir ich mache einfach eine eigene App. \n\n
-    Lizenz: GNU GPLv3\n\n
-    Ein großes Dankeschön an alle Experten bei stackoverflow, ohne deren Tipps wäre es niemals soweit gekommen!</string>
+    <string name="about_title">About this app</string>
+    <string name="about_message">GuruVani Version:0.01</string>
 </resources>

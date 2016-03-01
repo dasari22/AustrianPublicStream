@@ -306,7 +306,7 @@ public class MediaService extends Service implements IVLCVout.Callback, LibVLC.H
             mMediaPlayer.setMedia(m);
             mMediaPlayer.play();
         } catch (Exception e) {
-            Toast.makeText(MediaService.this, "Fehler beim Erstellen des Players...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MediaService.this, "Error creating player...", Toast.LENGTH_SHORT).show();
             Log.e("PUBLICSTREAM", "Error creating player: " + e.getMessage());
         }
     }
