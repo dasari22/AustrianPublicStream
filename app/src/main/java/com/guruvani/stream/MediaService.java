@@ -18,7 +18,7 @@
  along with AustrianPublicStream.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-package systems.byteswap.publicstream;
+package com.guruvani.stream;
 
 import android.app.Service;
 import android.content.Context;

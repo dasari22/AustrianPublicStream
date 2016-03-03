@@ -1,4 +1,4 @@
-package systems.byteswap.publicstream;
+package com.guruvani.stream;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
