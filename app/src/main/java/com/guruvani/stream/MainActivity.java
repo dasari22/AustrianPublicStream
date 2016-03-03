@@ -1,22 +1,23 @@
 /**
-        Copyright:
-        2015/2016 Benjamin Aigner
+ Copyright:
+ 2015/2016 Sunny Dasari
+ developer.google.com
 
-        This file is part of AustrianPublicStream.
+ This file is part of AustrianPublicStream.
 
-        AustrianPublicStream is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 3 of the License, or
-        (at your option) any later version.
+ GuruVani is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
 
-        AustrianPublicStream is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+ GuruVani is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with AustrianPublicStream.  If not, see <http://www.gnu.org/licenses/>.
-**/
+ You should have received a copy of the GNU General Public License
+ along with GuruVani.  If not, see <http://www.gnu.org/licenses/>.
+ **/
 
 package com.guruvani.stream;
 
@@ -38,14 +39,14 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;

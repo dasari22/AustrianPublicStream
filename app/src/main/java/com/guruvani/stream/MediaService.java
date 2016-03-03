@@ -1,21 +1,22 @@
 /**
  Copyright:
- 2015/2016 Benjamin Aigner
+ 2015/2016 Sunny Dasari
+ developer.google.com
 
  This file is part of AustrianPublicStream.
 
- AustrianPublicStream is free software: you can redistribute it and/or modify
+ GuruVani is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
 
- AustrianPublicStream is distributed in the hope that it will be useful,
+ GuruVani is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with AustrianPublicStream.  If not, see <http://www.gnu.org/licenses/>.
+ along with GuruVani.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
 package com.guruvani.stream;
@@ -31,10 +32,12 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
+
 import org.videolan.libvlc.IVLCVout;
 import org.videolan.libvlc.LibVLC;
 import org.videolan.libvlc.Media;
 import org.videolan.libvlc.MediaPlayer;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
@@ -49,16 +52,16 @@ import java.util.ArrayList;
  * In some occasions there might be a problem with the wifi/wakelocks. Should be investigated sometime.
  */
 public class MediaService extends Service implements IVLCVout.Callback, LibVLC.HardwareAccelerationError {
-    public final static String ACTION_PLAY_PAUSE = "systems.byteswap.action.PLAYPAUSE";
-    public final static String ACTION_PLAY = "systems.byteswap.action.PLAY";
-    public final static String ACTION_PAUSE = "systems.byteswap.action.PAUSE";
-    public final static String ACTION_STOP = "systems.byteswap.action.STOP";
-    public final static String ACTION_SETTIME = "systems.byteswap.action.SETTIME";
-    public final static String ACTION_LOAD = "systems.byteswap.action.LOAD";
+    public final static String ACTION_PLAY_PAUSE = "com.guruvani.stream.action.PLAYPAUSE";
+    public final static String ACTION_PLAY = "com.guruvani.stream.action.PLAY";
+    public final static String ACTION_PAUSE = "com.guruvani.stream.action.PAUSE";
+    public final static String ACTION_STOP = "com.guruvani.stream.action.STOP";
+    public final static String ACTION_SETTIME = "com.guruvani.stream.action.SETTIME";
+    public final static String ACTION_LOAD = "com.guruvani.stream.action.LOAD";
 
-    public final static String MEDIA_STATE_IDLE = "systems.byteswap.mediastate.IDLE";
-    public final static String MEDIA_STATE_PLAYING = "systems.byteswap.mediastate.PLAYING";
-    public final static String MEDIA_STATE_PAUSED = "systems.byteswap.mediastate.PAUSED";
+    public final static String MEDIA_STATE_IDLE = "com.guruvani.stream.mediastate.IDLE";
+    public final static String MEDIA_STATE_PLAYING = "com.guruvani.stream.mediastate.PLAYING";
+    public final static String MEDIA_STATE_PAUSED = "com.guruvani.stream.mediastate.PAUSED";
 
     private MediaPlayer mMediaPlayer = null;
     private LibVLC libvlc;
@@ -73,9 +76,9 @@ public class MediaService extends Service implements IVLCVout.Callback, LibVLC.H
     @Override
     public IBinder onBind(Intent intent) {
         wifiLock = ((WifiManager) getSystemService(Context.WIFI_SERVICE))
-                .createWifiLock(WifiManager.WIFI_MODE_FULL, "publicStreamWifiLock");
+                .createWifiLock(WifiManager.WIFI_MODE_FULL, "StreamWifiLock");
         wakeLock = ((PowerManager) getSystemService(Context.POWER_SERVICE))
-                .newWakeLock(PowerManager.PARTIAL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "publicStreamWakeLock");
+                .newWakeLock(PowerManager.PARTIAL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "StreamWakeLock");
 
         phoneStateListener = new PhoneStateListener() {
             @Override
@@ -307,7 +310,7 @@ public class MediaService extends Service implements IVLCVout.Callback, LibVLC.H
             mMediaPlayer.play();
         } catch (Exception e) {
             Toast.makeText(MediaService.this, "Error creating player...", Toast.LENGTH_SHORT).show();
-            Log.e("PUBLICSTREAM", "Error creating player: " + e.getMessage());
+            Log.e("STREAM", "Error creating player: " + e.getMessage());
         }
     }
 
