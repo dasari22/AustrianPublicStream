@@ -68,7 +68,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-//Android 5/6: Liste wird nicht richig gesichret (im 4 schon)
 //TODO: playback notifications am lockscreen: https://developer.android.com/guide/topics/ui/notifiers/notifications.html#lockscreenNotification
 
 public class MainActivity extends AppCompatActivity {
@@ -348,15 +347,15 @@ public class MainActivity extends AppCompatActivity {
     public void programLongClickListener(final ORFParser.ORFProgram child, boolean toDelete, String datum) {
         if(toDelete) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Wollen Sie den Beitrag " + child.shortTitle + " wirklich löschen?")
-                    .setTitle("Löschen");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setMessage("\n" + "Do you want to post" + child.shortTitle + "really delete?")
+                    .setTitle("Delete");
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     //delete the list entry & update the list
                     ORFParser parser = new ORFParser();
 
                     parser.removeProgramOffline(child, getBaseContext().getExternalCacheDir());
-                    Toast.makeText(MainActivity.this, "Beitrag gelöscht", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "\n" + "Post deleted", Toast.LENGTH_SHORT).show();
                     //Update the list
                     ArrayList<ORFParser.ORFProgram> temp = parser.getProgramsOffline(getBaseContext().getExternalCacheDir());
                     if(temp != null) {
@@ -370,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-            builder.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton("abort", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     // User cancelled the dialog
                 }
@@ -407,7 +406,7 @@ public class MainActivity extends AppCompatActivity {
                     String settingsPath = settings.getString(getString(R.string.SETTINGS_DOWNLOADFOLDER),Environment.getExternalStorageDirectory().toString());
                     if(settingsPath.equals("")) settingsPath = Environment.getExternalStorageDirectory().toString();
 
-                    File folder = new File(settingsPath + "/Ö1-Beiträge");
+                    File folder = new File(settingsPath + "/01-Posts");
                     fileName = datum + "-" + child.time.replace(':','.') + "-" + child.shortTitle + ".mp3";
                     folder.mkdirs();
 
@@ -463,7 +462,7 @@ public class MainActivity extends AppCompatActivity {
                     if(downloadedSize==totalSize) {
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                Toast.makeText(getBaseContext(), "Download abgeschlossen", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getBaseContext(), "\n" + "download completed", Toast.LENGTH_SHORT).show();
                             }
                         });
                         //Finally: add the downloaded program to the offline list and update the UI...
@@ -483,14 +482,14 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                Toast.makeText(getBaseContext(), "Fehler: unvollständiger Download", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getBaseContext(), "Error : Incomplete Download", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
                 } catch(final Exception e) {
                     runOnUiThread(new Runnable() {
                         public void run() {
-                            Toast.makeText(getBaseContext(), "Fehler: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -811,7 +810,7 @@ public class MainActivity extends AppCompatActivity {
             PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, 0);
 
             NotificationCompat.Builder mNotifyBuilder = new NotificationCompat.Builder(getBaseContext())
-                    .setContentTitle("Ö1 - PublicStream")
+                    .setContentTitle("01 - Guru Vani Stream")
                     .setSmallIcon(R.drawable.notification_play).setContentIntent(contentIntent);
             NotificationManager mNotificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -858,7 +857,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     seekbar.setProgress((int) (((float) currentTime / (float) currentDuration) * 1000));
                 } catch (ArithmeticException e) {
-                    Log.d("PUBLICSTREAM","Progressbar: Div by 0");
+                    Log.d("GURUVANISTREAM","Progressbar: Div by 0");
                 }
             } else {
                 seekbar.setProgress(0);
@@ -891,7 +890,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 default:
                     //if the playback is active, display the current time
-                    mNotifyBuilder.setContentText("Abspielen: " + dateString);
+                    mNotifyBuilder.setContentText("Play: " + dateString);
                     if(showPlayNotification) {
                         mNotification = mNotifyBuilder.build();
                         isPausedNotified = false;
@@ -998,6 +997,7 @@ public class MainActivity extends AppCompatActivity {
         ComponentName myEventReceiver = new ComponentName(getPackageName(), MainActivity.class.getName());
         AudioManager myAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         myAudioManager.registerMediaButtonEventReceiver(myEventReceiver);
+       // myAudioManager.setMediaButtonReceiver(myEventReceiver);
         // build the PendingIntent for the remote control client
         Intent mediaButtonIntent = new Intent(Intent.ACTION_MEDIA_BUTTON);
         mediaButtonIntent.setComponent(myEventReceiver);

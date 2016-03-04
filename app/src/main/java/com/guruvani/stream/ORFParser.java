@@ -66,6 +66,7 @@ public class ORFParser {
     private ArrayList<ORFProgram> programList;
     public final static String ORF_FULL_BASE_URL = "http://oe1.orf.at/programm/konsole/tag/";
     public final static String ORF_LIVE_URL = "http://mp3stream3.apasf.apa.at:8000/;stream.mp3";
+    //public final static String ORF_LIVE_URL = "http://listen.radionomy.com:80/SwastikTeluguBhajansDhuns";
     public final static String OFFLINE_XML_NAME = "oe1_offline.xml";
 
     public final static String XML_PROGRAM = "program";
@@ -77,6 +78,7 @@ public class ORFParser {
     public final static String XML_URL = "url";
     public final static String XML_FILENAME = "filename";
     public final static String XML_DAYLABEL = "daylabel";
+    public static String LOCAL_DATA = "localData/discoursesList.json";
 
     /*public static String ORF_DURATION_URL1 = "http://oe1.orf.at/programm/";
     public static String ORF_DURATION_URL2 = "/playlist";*/
@@ -131,8 +133,8 @@ public class ORFParser {
             }
 
         } catch (JSONException e) {
-            Log.e("ORFParser", "Liste passt nicht...");
-            return "Liste ist ungültig, bitte beim ORF beschweren...";
+            Log.e("ORFParser", "\n" + "List does not fit...");
+            return "List is invalid , please contact the Sunny";
         }
         return "";
     }
@@ -150,6 +152,7 @@ public class ORFParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //return LOCAL_DATA;
         return this.programList;
     }
 
